@@ -11,5 +11,5 @@
 	<!-- 扫描service自动注入为bean -->
 	<context:component-scan base-package="com.mango.jtt.controller" />
 	<!-- 扫描service自动注入为bean -->
-	<context:component-scan base-package="com.mango.jtt..service,com.mango.jtt..dao" />
+	<context:component-scan base-package="com.mango.jtt.service,com.mango.jtt.dao" />
 </beans>

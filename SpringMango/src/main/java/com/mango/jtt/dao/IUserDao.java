@@ -12,4 +12,5 @@ public interface IUserDao {
 	public User get(int id) throws Exception;
 
 	public Boolean save(User model) throws Exception;
+
 }

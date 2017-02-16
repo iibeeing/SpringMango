@@ -19,4 +19,5 @@ public interface IUserService {
 	public ResponseResult saveOrUpdate(User user) throws Exception;
 
 	public ResponseResult save(User model) throws Exception;
+	
 }
