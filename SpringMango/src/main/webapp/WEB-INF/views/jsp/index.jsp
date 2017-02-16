@@ -19,6 +19,7 @@
 	<a href="toadd">点此添加</a>
 	<a href="user">用户信息</a>
 	<a href="useredit">用户修改</a>
+	<a href="user/users">用户信息查询</a>
 	<form name="loginForm" method="post" action="judgeUser.jsp">
 		<table>
 			<tr>

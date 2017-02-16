@@ -1,9 +1,12 @@
 package com.mango.jtt.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mango.jtt.model.ResponseResult;
 import com.mango.jtt.model.User;
+import com.mango.jtt.model.UserT;
 import com.mango.jtt.service.IUserService;
+import com.mango.jtt.service.IUserTService;
 import com.mango.jtt.util.ConstUtil;
 
 @RestController
@@ -22,6 +27,9 @@ public class UserController {
 
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IUserTService userTService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
@@ -33,15 +41,15 @@ public class UserController {
 		return rr;
 	}
 
-/*	@RequestMapping(value = "/", method = RequestMethod.GET)
-	@ResponseBody
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseResult index2(@Valid User model, BindingResult br,
 			HttpServletRequest req) throws Exception {
 		ResponseResult rr = new ResponseResult();
-		rr = userService.list(model);
-		System.out.println("index2 -- " + rr);
+		List<UserT> list = userTService.selectAll();
+		rr.setResult(list);
+		System.out.println("index2 -- " + list);
 		return rr;
-	}*/
+	}
 
 	/** 　进入新增　 */
 	@RequestMapping(value = "/new")
@@ -67,7 +75,8 @@ public class UserController {
 	public ResponseResult create(User model, HttpServletRequest req)
 			throws Exception {
 		ResponseResult rr = new ResponseResult();
-		rr = userService.save(model);
+		//rr = userService.save(model);
+		rr = userTService.save(model);
 		System.out.println("create -- " + rr);
 		return rr;
 	}
@@ -84,12 +93,12 @@ public class UserController {
 		System.out.println(oid + " -- " + oname + " -- " + opassword);
 		System.out.println(model.toString());
 		if (id == model.getId()) {
-			rr = userService.saveOrUpdate(model);
+			//rr = userService.saveOrUpdate(model);
+			rr = userTService.saveOrUpdate(model);
 		} else {
 			rr.setStatusCode(ConstUtil.RESPONSECODE_INPUTPARAMNULL);
 			rr.setMsg("参数不匹配，请重试");
 		}
-
 		System.out.println("edit -- " + rr);
 		return rr;
 	}

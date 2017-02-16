@@ -1,5 +1,7 @@
 package com.mango.jtt.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.mango.jtt.model.UserT;
@@ -17,4 +19,6 @@ public interface IUserTDao {
 	int updateByPrimaryKeySelective(UserT record);
 
 	int updateByPrimaryKey(UserT record);
+
+	List<UserT> selectAll();
 }
