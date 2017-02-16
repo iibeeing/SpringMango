@@ -3351,3 +3351,297 @@ Caused by: java.lang.IllegalStateException: Neither GenericXmlContextLoader nor 
 [INFO] [2017-02-16 14:29:39][com.test.mybatis.TestMyBatis]{"age":24,"id":1,"password":"sfasgfaf","userName":"测试"}
 [INFO] [2017-02-16 14:29:39][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@182752b: startup date [Thu Feb 16 14:29:38 CST 2017]; root of context hierarchy
 [INFO] [2017-02-16 14:29:39][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+[INFO] [2017-02-16 15:01:03][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:01:03][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:01:03][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:01:03][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:01:03 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:01:03][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[WARN] [2017-02-16 15:01:03][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+[ERROR] [2017-02-16 15:01:03][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b] to prepare test instance [com.test.mybatis.TestStudentT@35c7be]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:349)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:776)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1105)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1050)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:566)
+	... 43 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1098)
+	... 55 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at com.mango.jtt.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 57 more
+[INFO] [2017-02-16 15:02:26][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:02:26][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@9f9afb, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@780024, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@515979, org.springframework.test.context.support.DirtiesContextTestExecutionListener@c92575, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1ba3523, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f6c937]
+[INFO] [2017-02-16 15:02:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:02:26][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@2fbdd2: startup date [Thu Feb 16 15:02:26 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:02:26][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[WARN] [2017-02-16 15:02:26][org.springframework.context.support.GenericApplicationContext]Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+[ERROR] [2017-02-16 15:02:26][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@515979] to prepare test instance [com.test.mybatis.TestMyBatis2@dd17f5]
+java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:83)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:117)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:467)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:683)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:390)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:197)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:569)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:349)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:776)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:128)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:108)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:251)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:98)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:116)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService' defined in file [C:\Users\Bee\git\SpringMango\SpringMango\target\classes\com\mango\jtt\service\impl\UserServiceImpl.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1105)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1050)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:566)
+	... 43 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.mango.jtt.service.impl.UserServiceImpl]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1098)
+	... 55 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import com.mango.jtt.model.TUser cannot be resolved
+	TUser cannot be resolved to a type
+	The method list(User) from the type IUserDao refers to the missing type TUser
+	TUser cannot be resolved to a type
+
+	at com.mango.jtt.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:12)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 57 more
+[INFO] [2017-02-16 15:06:03][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:06:03][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@14b8c21, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@dcdeae, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@9f9afb, org.springframework.test.context.support.DirtiesContextTestExecutionListener@780024, org.springframework.test.context.transaction.TransactionalTestExecutionListener@515979, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@c92575]
+[INFO] [2017-02-16 15:06:03][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:06:03][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@182752b: startup date [Thu Feb 16 15:06:03 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:06:03][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:06:03][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:06:04][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO] [2017-02-16 15:06:04][com.test.mybatis.TestMyBatis]{"age":24,"id":1,"password":"sfasgfaf","userName":"测试"}
+[INFO] [2017-02-16 15:06:04][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@182752b: startup date [Thu Feb 16 15:06:03 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:06:04][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+[INFO] [2017-02-16 15:06:22][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:06:22][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:06:23][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:06:23][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:06:23 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:06:23][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:06:23][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:06:23][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO] [2017-02-16 15:06:23][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:06:23 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:06:23][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+[INFO] [2017-02-16 15:07:05][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:07:05][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:07:05][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:07:05][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:07:05 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:07:05][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:07:05][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:07:06][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO] [2017-02-16 15:07:06][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:07:05 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:07:06][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
+[INFO] [2017-02-16 15:09:45][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:09:45][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:09:45][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:09:45][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:09:45 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:09:45][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:09:45][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:09:45][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:09:45 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:12:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:12:31][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:12:31][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:12:32][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:12:32 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:12:32][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:12:32][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:12:32][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:12:32 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:13:37][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:13:37][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:13:37][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:13:37][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:13:37 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:13:38][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:13:38][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:13:38][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:13:37 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:19:41][org.springframework.test.context.support.DefaultTestContextBootstrapper]Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+[INFO] [2017-02-16 15:19:42][org.springframework.test.context.support.DefaultTestContextBootstrapper]Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1187984, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d2052b, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@151574b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@13a1324, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1bed674, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1f18cd5]
+[INFO] [2017-02-16 15:19:42][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-02-16 15:19:42][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:19:42 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:19:42][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[ERROR] [2017-02-16 15:19:42][com.alibaba.druid.pool.DruidAbstractDataSource]maxIdle is deprecated
+[INFO] [2017-02-16 15:19:42][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} inited
+[INFO] [2017-02-16 15:19:42][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@6ca716: startup date [Thu Feb 16 15:19:42 CST 2017]; root of context hierarchy
+[INFO] [2017-02-16 15:19:42][com.alibaba.druid.pool.DruidDataSource]{dataSource-1} closed
