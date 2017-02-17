@@ -6,10 +6,6 @@
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 	<!-- 加载配置文件 -->
-
-	<!-- <context:property-placeholder location="classpath:config.properties"/> -->
-	<!-- 扫描service自动注入为bean -->
-	<context:component-scan base-package="com.mango.jtt.controller" />
-	<!-- 扫描service自动注入为bean -->
-	<context:component-scan base-package="com.mango.jtt.service,com.mango.jtt.dao" />
+	<import resource="classpath:spring-mvc.xml"/>
+	<import resource="classpath:spring-mybatis.xml"/>
 </beans>
