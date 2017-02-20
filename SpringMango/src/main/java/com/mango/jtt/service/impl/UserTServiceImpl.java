@@ -64,4 +64,18 @@ public class UserTServiceImpl implements IUserTService {
 		return rr;
 	}
 
+	public ResponseResult login(UserT user) throws Exception {
+		ResponseResult rr = new ResponseResult();
+		List<UserT> list = userTDao.select(user);
+		System.out.println("查询结果 -- " + list);
+		if(list != null && list.size() == 1){
+			rr.setStatusCode(ConstUtil.RESPONSECODE_SUCCESS);
+			rr.setMsg("登录成功");
+		}else{
+			rr.setStatusCode(ConstUtil.RESPONSECODE_FAIL);
+			rr.setMsg("账户或密码错误");
+		}
+		return rr;
+	}
+
 }

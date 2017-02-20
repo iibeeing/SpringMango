@@ -22,14 +22,35 @@
 		<include refid="Base_Column_List" />
 		from user_t
 	</select>
+	<select id="select" resultMap="BaseResultMap" parameterType="com.mango.jtt.model.UserT">
+		select
+		<include refid="Base_Column_List" />
+		from user_t
+		where 1 = 1
+		<if test=" null != id">
+			and id = #{id}
+		</if>
+		<if test=" null != userName">
+			and user_name = #{userName}
+		</if>
+		<if test=" null != password">
+			and password = #{password}
+		</if>
+		<if test=" null != age">
+			and age = #{age}
+		</if>
+		order by id
+	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from user_t
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.mango.jtt.model.UserT">
-		insert into user_t (id, user_name, password,
+		insert into user_t (id,
+		user_name, password,
 		age)
-		values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+		values (#{id,jdbcType=INTEGER},
+		#{userName,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR},
 		#{age,jdbcType=INTEGER})
 	</insert>
@@ -81,9 +102,12 @@
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.mango.jtt.model.UserT">
 		update user_t
-		set user_name = #{userName,jdbcType=VARCHAR},
-		password = #{password,jdbcType=VARCHAR},
+		set
+		user_name = #{userName,jdbcType=VARCHAR},
+		password =
+		#{password,jdbcType=VARCHAR},
 		age = #{age,jdbcType=INTEGER}
-		where id = #{id,jdbcType=INTEGER}
+		where id =
+		#{id,jdbcType=INTEGER}
 	</update>
 </mapper>

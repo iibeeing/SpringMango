@@ -17,4 +17,6 @@ public interface IUserTService {
 	public ResponseResult saveOrUpdate(User model) throws Exception;
 
 	public ResponseResult save(User model) throws Exception;
+
+	public ResponseResult login(UserT user) throws Exception;
 }

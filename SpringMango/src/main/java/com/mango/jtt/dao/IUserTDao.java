@@ -21,4 +21,6 @@ public interface IUserTDao {
 	int updateByPrimaryKey(UserT record);
 
 	List<UserT> selectAll();
+	
+	List<UserT> select(UserT user) throws Exception;
 }
