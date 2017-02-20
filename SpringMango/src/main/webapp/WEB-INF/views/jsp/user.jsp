@@ -44,7 +44,7 @@
 </head>
 <body>
 
-	<h1>USER</h1>
+	<h1>USER(${user.principal})</h1>
 
 	<div style="text-align: center">
 		<img src="<c:url value='/resources/images/team.jpg'/>" />

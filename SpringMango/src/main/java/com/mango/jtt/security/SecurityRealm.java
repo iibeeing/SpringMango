@@ -1,5 +1,7 @@
 package com.mango.jtt.security;
 
+import java.util.List;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -10,22 +12,14 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.log4j.Logger;
-
+import com.mango.jtt.dao.IUserTDao;
 import com.mango.jtt.model.UserT;
-import com.mango.jtt.service.IUserTService;
 
-/**
- * @ClassName: SecurityRealm
- * @Description: 用户身份验证,授权 Realm 组件
- * @author BEE
- * @date 2017-2-16 下午4:31:45
- */
-//@Component(value = "securityRealm")
 public class SecurityRealm extends AuthorizingRealm {
 	private static Logger logger = Logger.getLogger(SecurityRealm.class);
 
 	@Autowired
-	private IUserTService userTService;
+	private IUserTDao userTDao;
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
@@ -46,23 +40,26 @@ public class SecurityRealm extends AuthorizingRealm {
 			AuthenticationToken token) throws AuthenticationException {
 		String username = String.valueOf(token.getPrincipal());
 		String password = new String((char[]) token.getCredentials());
-		// 通过数据库进行验证
 		UserT unauthUser = new UserT();
-		unauthUser.userName = username;
-		unauthUser.password = password;
+		unauthUser.setUserName(username);
+		unauthUser.setPassword(password);
+		List<UserT> list;
 		try {
-			final UserT authUser = userTService.authenticate(unauthUser);
-			logger.info("待验证用户：" + unauthUser);
-			logger.info("验证结果:" + authUser);
-			if (authUser == null) {
+			list = userTDao.select(unauthUser);
+			if (list != null && list.size() == 1) {
+				UserT authUser = list.get(0);
+			} else {
 				throw new AuthenticationException("用户名或密码错误.");
 			}
 		} catch (Exception e) {
+			if (e instanceof AuthenticationException) {
+				throw new AuthenticationException("用户名或密码错误.");
+			}
+			e.printStackTrace();
 		}
 
 		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
 				username, password, getName());
-
 		return authenticationInfo;
 	}
 
