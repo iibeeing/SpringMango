@@ -70,15 +70,6 @@ public class UserController {
 	}
 
 	/** 保存新增 */
-	/*
-	 * @RequestMapping(method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseResult create(User model, HttpServletRequest
-	 * req) throws Exception { ResponseResult rr = new ResponseResult(); //rr =
-	 * userService.save(model); rr = userTService.save(model);
-	 * System.out.println("create -- " + rr); return rr; }
-	 */
-
 	@SuppressWarnings("finally")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
