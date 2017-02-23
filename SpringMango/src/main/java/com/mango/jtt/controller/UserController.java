@@ -4,7 +4,6 @@ import java.lang.reflect.UndeclaredThrowableException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +11,6 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.cglib.proxy.UndeclaredThrowableException;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +22,11 @@ import com.mango.jtt.model.User;
 import com.mango.jtt.model.UserT;
 import com.mango.jtt.service.IUserService;
 import com.mango.jtt.service.IUserTService;
-import com.mango.jtt.system.aspect.exception.ParamValidException;
 import com.mango.jtt.util.ConstUtil;
 
 @RestController
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends BaseController{
 
 	@Autowired
 	private IUserService userService;
@@ -83,11 +80,9 @@ public class UserController {
 			System.out.println(username + " --- " + password);
 			model.setName(username);
 			model.setPassword(password);
-			rr = userTService.save(model);
+			//rr = userTService.save(model);
 			System.out.println("create -- " + rr);
-
 		} catch (UndeclaredThrowableException e) {
-			// TODO: handle exception
 			Throwable throwable = e.getUndeclaredThrowable(); // 获得实际异常
 			System.out.println(throwable.getMessage());
 			System.out.println(throwable.toString());
@@ -111,7 +106,6 @@ public class UserController {
 		System.out.println(oid + " -- " + oname + " -- " + opassword);
 		System.out.println(model.toString());
 		if (id == model.getId()) {
-			// rr = userService.saveOrUpdate(model);
 			rr = userTService.saveOrUpdate(model);
 		} else {
 			rr.setStatusCode(ConstUtil.RESPONSECODE_INPUTPARAMNULL);
@@ -130,7 +124,7 @@ public class UserController {
 		return rr;
 	}
 
-	@ExceptionHandler(UndeclaredThrowableException.class)
+/*	@ExceptionHandler(UndeclaredThrowableException.class)
 	@ResponseBody
 	public ResponseResult undeclaredThrowableException(UndeclaredThrowableException ex, HttpServletResponse response) {
 		Throwable throwable = ex.getUndeclaredThrowable(); // 获得实际异常
@@ -139,24 +133,7 @@ public class UserController {
 			rr.setStatusCode(ConstUtil.RESPONSECODE_FAIL);
 			rr.setMsg(throwable.toString());
 		}
-		
 		System.out.println("- - 异常 undeclaredThrowableException - - " + ex.getMessage());
 		return rr;
-	}
-
-	/**
-	 * 异常页面控制
-	 * 
-	 * @param runtimeException
-	 * @return
-	 */
-/*	@ExceptionHandler(RuntimeException.class)
-	public @ResponseBody void runtimeExceptionHandler(RuntimeException ex) {
-		System.out.println("- - 异常 runtimeExceptionHandler - - " + ex.getMessage());
 	}*/
-	
-	@ExceptionHandler(Exception.class)
-	public @ResponseBody void exceptionHandler(Exception ex) {
-		System.out.println("- - 异常 exceptionHandler - - " + ex.getMessage());
-	}
 }

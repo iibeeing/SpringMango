@@ -45,12 +45,12 @@
 <body>
 
 	<h1>USER(${user.principal})</h1>
-
 	<div style="text-align: center">
 		<img src="<c:url value='/resources/images/team.jpg'/>" />
 	</div>
 	<div>
 		<label>保存新增</label>
+		
 		<form name="saveAddForm" method="post" action="user/">
 			<table>
 				<tr>
