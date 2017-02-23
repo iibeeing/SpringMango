@@ -1,15 +1,14 @@
 package com.mango.jtt.system.aspect;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -52,8 +51,10 @@ public class RequestParamValidAspect {
 		Set<ConstraintViolation<Object>> validResult = validMethodParams(target, method, args);
 
 		if (!validResult.isEmpty()) {
+			
 			String[] parameterNames = parameterNameDiscoverer.getParameterNames(method); // 获得方法的参数名称
-			List<FieldError> errors = validResult.stream().map(constraintViolation -> {
+			/*JDK 1.8及以上的版本*/
+			/*List<FieldError> errors = validResult.stream().map(constraintViolation -> {
 				PathImpl pathImpl = (PathImpl) constraintViolation.getPropertyPath(); // 获得校验的参数路径信息
 				int paramIndex = pathImpl.getLeafNode().getParameterIndex(); // 获得校验的参数位置
 				String paramName = parameterNames[paramIndex]; // 获得校验的参数名称
@@ -63,15 +64,24 @@ public class RequestParamValidAspect {
 				System.out.println(" 切面 1 " + error.toString());
 				return error;
 			}).collect(Collectors.toList());
-
-			// 相当于stream
-			/*
-			 * Iterator<ConstraintViolation<Object>> itor =
-			 * validResult.iterator(); ConstraintViolation<Object> m =
-			 * itor.next(); ConstraintViolation constraintViolation = new
-			 * ConstraintViolation<Object>() { }; List<FieldError> error = itor.
-			 */
 			System.out.println(" 切面 2 " + errors.toString());
+			throw new ParamValidException(errors); // 我个人的处理方式，抛出异常，交给上层处理
+			*/
+			
+			/*JDK 1.8以下的版本*/
+			List<FieldError> errors = new ArrayList<FieldError>();
+			Iterator<ConstraintViolation<Object>> itor = validResult.iterator();
+			while(itor.hasNext()){
+				ConstraintViolation<Object> constraintViolation = itor.next();
+				PathImpl pathImpl = (PathImpl) constraintViolation.getPropertyPath(); // 获得校验的参数路径信息
+				int paramIndex = pathImpl.getLeafNode().getParameterIndex(); // 获得校验的参数位置
+				String paramName = parameterNames[paramIndex]; // 获得校验的参数名称
+				FieldError error = new FieldError(); // 将需要的信息包装成简单的对象，方便后面处理
+				error.setName(paramName); // 参数名称（校验错误的参数名称）
+				error.setMessage(constraintViolation.getMessage()); // 校验的错误信息
+				System.out.println(" 切面 1 " + error.toString());
+				errors.add(error);
+			}
 			throw new ParamValidException(errors); // 我个人的处理方式，抛出异常，交给上层处理
 		}
 	}
