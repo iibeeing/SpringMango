@@ -80,7 +80,7 @@ public class UserController extends BaseController{
 			System.out.println(username + " --- " + password);
 			model.setName(username);
 			model.setPassword(password);
-			//rr = userTService.save(model);
+			rr = userTService.save(model);
 			System.out.println("create -- " + rr);
 		} catch (UndeclaredThrowableException e) {
 			Throwable throwable = e.getUndeclaredThrowable(); // 获得实际异常
