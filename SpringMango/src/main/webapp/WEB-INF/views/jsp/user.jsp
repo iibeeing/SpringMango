@@ -54,7 +54,7 @@
 		<form name="saveAddForm" method="post" action="user/">
 			<table>
 				<tr>
-					<td>用户名:<input type="text" name="name" id="addName"></td>
+					<td>用户名:<input type="text" name="username" id="addName"></td>
 				</tr>
 				<tr>
 					<td>密码:<input type="password" name="password" id="addPassword"></td>

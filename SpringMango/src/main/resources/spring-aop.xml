@@ -11,10 +11,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-
 	<context:component-scan base-package="com.mango.jtt" />
-
 	<!-- 启动AspectJ自动代理 -->
 	<aop:aspectj-autoproxy />
-	<bean class="com.mango.jtt.system.aspect.Audience" />
+	<!-- <bean class="com.mango.jtt.system.aspect.Audience" /> -->
 </beans>

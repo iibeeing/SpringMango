@@ -1,16 +1,18 @@
 package com.mango.jtt.controller;
 
+import java.lang.reflect.UndeclaredThrowableException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.proxy.UndeclaredThrowableException;
-import org.springframework.ui.Model;
+//import org.springframework.cglib.proxy.UndeclaredThrowableException;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,7 @@ import com.mango.jtt.model.User;
 import com.mango.jtt.model.UserT;
 import com.mango.jtt.service.IUserService;
 import com.mango.jtt.service.IUserTService;
+import com.mango.jtt.system.aspect.exception.ParamValidException;
 import com.mango.jtt.util.ConstUtil;
 
 @RestController
@@ -73,7 +76,7 @@ public class UserController {
 	@SuppressWarnings("finally")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseResult create(@NotNull String username, @NotNull String password, HttpServletRequest req) {
+	public ResponseResult create(@NotNull @NotBlank String username, @NotNull @NotBlank String password, HttpServletRequest req) {
 		ResponseResult rr = new ResponseResult();
 		try {
 			User model = new User();
@@ -90,7 +93,7 @@ public class UserController {
 			System.out.println(throwable.toString());
 			System.out.println("UndeclaredThrowableException -- " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("UndeclaredThrowableException -- " + e.getMessage());
+			System.out.println("Exception -- " + e.getMessage());
 		} finally {
 			return rr;
 		}
@@ -125,5 +128,35 @@ public class UserController {
 		rr = userService.delete(id);
 		System.out.println("delete -- " + "id -- " + id + rr);
 		return rr;
+	}
+
+	@ExceptionHandler(UndeclaredThrowableException.class)
+	@ResponseBody
+	public ResponseResult undeclaredThrowableException(UndeclaredThrowableException ex, HttpServletResponse response) {
+		Throwable throwable = ex.getUndeclaredThrowable(); // 获得实际异常
+		ResponseResult rr = new ResponseResult();
+		if (throwable instanceof ParamValidException) { // 如果是我们自定义异常就调用自定义异常的处理方法
+			rr.setStatusCode(ConstUtil.RESPONSECODE_FAIL);
+			rr.setMsg(throwable.toString());
+		}
+		
+		System.out.println("- - 异常 undeclaredThrowableException - - " + ex.getMessage());
+		return rr;
+	}
+
+	/**
+	 * 异常页面控制
+	 * 
+	 * @param runtimeException
+	 * @return
+	 */
+/*	@ExceptionHandler(RuntimeException.class)
+	public @ResponseBody void runtimeExceptionHandler(RuntimeException ex) {
+		System.out.println("- - 异常 runtimeExceptionHandler - - " + ex.getMessage());
+	}*/
+	
+	@ExceptionHandler(Exception.class)
+	public @ResponseBody void exceptionHandler(Exception ex) {
+		System.out.println("- - 异常 exceptionHandler - - " + ex.getMessage());
 	}
 }

@@ -1,7 +1,6 @@
 package com.mango.jtt.system.aspect;
 
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -61,7 +60,7 @@ public class RequestParamValidAspect {
 				FieldError error = new FieldError(); // 将需要的信息包装成简单的对象，方便后面处理
 				error.setName(paramName); // 参数名称（校验错误的参数名称）
 				error.setMessage(constraintViolation.getMessage()); // 校验的错误信息
-				System.out.println(error.toString());
+				System.out.println(" 切面 1 " + error.toString());
 				return error;
 			}).collect(Collectors.toList());
 
@@ -72,6 +71,7 @@ public class RequestParamValidAspect {
 			 * itor.next(); ConstraintViolation constraintViolation = new
 			 * ConstraintViolation<Object>() { }; List<FieldError> error = itor.
 			 */
+			System.out.println(" 切面 2 " + errors.toString());
 			throw new ParamValidException(errors); // 我个人的处理方式，抛出异常，交给上层处理
 		}
 	}
