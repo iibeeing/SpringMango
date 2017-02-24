@@ -1,11 +1,12 @@
 package com.mango.jtt.dao;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import com.mango.jtt.model.StudentT;
 
 @Repository
-public interface IStudentTDao{
+public interface IStudentTDao {
 	int deleteByPrimaryKey(Integer id);
 
 	int insert(StudentT record);
@@ -17,4 +18,6 @@ public interface IStudentTDao{
 	int updateByPrimaryKeySelective(StudentT record);
 
 	int updateByPrimaryKey(StudentT record);
+
+	List<StudentT> select(StudentT record);
 }

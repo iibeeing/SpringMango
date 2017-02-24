@@ -4,12 +4,12 @@
   <resultMap id="BaseResultMap" type="com.mango.jtt.model.StudentT">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="classno" jdbcType="INTEGER" property="classno" />
-    <result column="gradeno" jdbcType="INTEGER" property="gradeno" />
     <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="friendName" jdbcType="VARCHAR" property="friendname" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, classno, gradeno, address
+    id, name, address, friendName, weight
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -17,15 +17,28 @@
     from student_t
     where id = #{id,jdbcType=INTEGER}
   </select>
+  	<select id="select" resultMap="BaseResultMap" parameterType="com.mango.jtt.model.UserT">
+		select
+		<include refid="Base_Column_List" />
+		from student_t
+		where 1 = 1
+		<if test=" null != id">
+			and id = #{id}
+		</if>
+		<if test=" null != userName">
+			and name = #{name}
+		</if>
+		order by id
+	</select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from student_t
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mango.jtt.model.StudentT">
-    insert into student_t (id, name, classno, 
-      gradeno, address)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{classno,jdbcType=INTEGER}, 
-      #{gradeno,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR})
+    insert into student_t (id, name, address, 
+      friendName, weight)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{friendname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.mango.jtt.model.StudentT">
     insert into student_t
@@ -36,14 +49,14 @@
       <if test="name != null">
         name,
       </if>
-      <if test="classno != null">
-        classno,
-      </if>
-      <if test="gradeno != null">
-        gradeno,
-      </if>
       <if test="address != null">
         address,
+      </if>
+      <if test="friendname != null">
+        friendName,
+      </if>
+      <if test="weight != null">
+        weight,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -53,14 +66,14 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="classno != null">
-        #{classno,jdbcType=INTEGER},
-      </if>
-      <if test="gradeno != null">
-        #{gradeno,jdbcType=INTEGER},
-      </if>
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="friendname != null">
+        #{friendname,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -70,14 +83,14 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="classno != null">
-        classno = #{classno,jdbcType=INTEGER},
-      </if>
-      <if test="gradeno != null">
-        gradeno = #{gradeno,jdbcType=INTEGER},
-      </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="friendname != null">
+        friendName = #{friendname,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -85,9 +98,9 @@
   <update id="updateByPrimaryKey" parameterType="com.mango.jtt.model.StudentT">
     update student_t
     set name = #{name,jdbcType=VARCHAR},
-      classno = #{classno,jdbcType=INTEGER},
-      gradeno = #{gradeno,jdbcType=INTEGER},
-      address = #{address,jdbcType=VARCHAR}
+      address = #{address,jdbcType=VARCHAR},
+      friendName = #{friendname,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,6 +3,7 @@ package com.mango.jtt.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.mango.jtt.dao.IUserTDao;
@@ -10,7 +11,9 @@ import com.mango.jtt.dao.impl.BaseDao;
 import com.mango.jtt.model.ResponseResult;
 import com.mango.jtt.model.User;
 import com.mango.jtt.model.UserT;
+import com.mango.jtt.model.Users;
 import com.mango.jtt.service.IUserTService;
+import com.mango.jtt.system.entity.PagedResult;
 import com.mango.jtt.util.ConstUtil;
 
 @Service
@@ -76,6 +79,17 @@ public class UserTServiceImpl implements IUserTService {
 			rr.setMsg("账户或密码错误");
 		}
 		return rr;
+	}
+
+	public ResponseEntity<Users> lists(UserT user) throws Exception {
+		// TODO Auto-generated method stub
+		Users users = new Users();
+		List<UserT> list = userTDao.select(user);
+		PagedResult<UserT> pr = new PagedResult<UserT>();
+		pr.setDataList(list);
+		
+		
+		return null;
 	}
 
 }

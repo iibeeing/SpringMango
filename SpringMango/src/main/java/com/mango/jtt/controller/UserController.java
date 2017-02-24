@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 //import org.springframework.cglib.proxy.UndeclaredThrowableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mango.jtt.model.ResponseResult;
 import com.mango.jtt.model.User;
 import com.mango.jtt.model.UserT;
+import com.mango.jtt.model.Users;
 import com.mango.jtt.service.IUserService;
 import com.mango.jtt.service.IUserTService;
 import com.mango.jtt.util.ConstUtil;
+import com.sun.tools.internal.ws.processor.model.Response;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -43,6 +46,14 @@ public class UserController extends BaseController{
 		return rr;
 	}
 
+	
+/*	public ResponseEntity<Users> indexs(@Valid UserT model,Integer pageNo,Integer pageSize ,HttpServletRequest req) throws Exception {
+		ResponseEntity<Users> users = userTService.lists(model);
+		System.out.println("indexs -- " + users);
+		return users;
+	}*/
+	
+	
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ResponseResult index2(@Valid User model, BindingResult br, HttpServletRequest req) throws Exception {
 		ResponseResult rr = new ResponseResult();

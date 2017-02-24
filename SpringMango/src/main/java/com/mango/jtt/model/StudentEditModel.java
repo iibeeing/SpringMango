@@ -1,19 +1,24 @@
 package com.mango.jtt.model;
 
-/**
-@ClassName: StudentT
-@Description: 同DB映射
-@author BEE 
-@date 2017-2-24 下午3:03:54
- */
-public class StudentT {
-	
+import java.math.BigDecimal;
+
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.mango.jtt.system.entity.Messager;
+
+public class StudentEditModel extends Messager {
+
+	@NotNull
+	@NotBlank
 	private Integer id;
-
+	@NotNull
+	@NotBlank
 	private String name;
-
+	@NotNull
+	@NotBlank
 	private String address;
-
 	private String friendName;
 
 	private Integer weight;
@@ -57,12 +62,6 @@ public class StudentT {
 	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
-
-	@Override
-	public String toString() {
-		return String
-				.format("StudentT [id=%s, name=%s, address=%s, friendName=%s, weight=%s]",
-						id, name, address, friendName, weight);
-	}
-
+	
+	
 }
