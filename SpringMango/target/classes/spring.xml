@@ -5,9 +5,18 @@
 			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
 			http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	<!-- 引入属性配置文件 -->
+	<bean class="com.mango.jtt.core.util.PropertiesUtil">
+		<property name="locations">
+			<list>
+				<value>classpath:system.properties</value>
+			</list>
+		</property>
+	</bean>
 	<!-- 加载配置文件 -->
 	<import resource="classpath:spring-mvc.xml" />
 	<import resource="classpath:spring-mybatis.xml" />
 	<import resource="classpath:spring-shiro.xml" />
 	<import resource="classpath:spring-aop.xml" />
+<!-- 	<import resource="classpath:redis.xml" /> -->
 </beans>
