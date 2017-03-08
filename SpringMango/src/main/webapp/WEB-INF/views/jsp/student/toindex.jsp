@@ -7,9 +7,17 @@
 <meta name="menu" content="home" />
 <script type="text/javascript"
 	src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		alert("ab");
+		var url = "list";
+ 		$.get(url, function(data) {
+			alert("数据：" + data);
+		});
+	});
+</script>
 </head>
 <body>
 	<h1>1234567890</h1>
-	${modeldata.studentlist}
 </body>
 </html>

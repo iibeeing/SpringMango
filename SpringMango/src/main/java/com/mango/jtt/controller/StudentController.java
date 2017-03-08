@@ -25,10 +25,16 @@ public class StudentController extends BaseController {
 
 	@Autowired
 	private IStudentTService studentTService;
-
-	@SuppressWarnings("finally")
+	
 	@RequestMapping({ "/toindex", "/toindex" })
-	public ResponseEntity<StudentListModel> toindex() throws Exception {
+	public ModelAndView toindex()throws Exception{
+		ModelAndView mav = new ModelAndView("/student/toindex");
+		return mav;
+	}
+	
+	@SuppressWarnings("finally")
+	@RequestMapping({ "/toindexs", "/toindexs" })
+	public ResponseEntity<StudentListModel> toindexs() throws Exception {
 	//public ModelAndView toindex() throws Exception {
 		//ModelAndView modelAndView = new ModelAndView("/student/toindex");  
 		ResponseEntity<StudentListModel> re = new ResponseEntity<StudentListModel>(HttpStatus.OK);
@@ -69,6 +75,7 @@ public class StudentController extends BaseController {
 				pr.setPageNo(searcher.getPageNo());
 			}
 			ss.setPr(pr);
+			ss.setMsg(new StringBuilder("数据读取成功"));
 			re = new ResponseEntity<StudentListModel>(ss,HttpStatus.OK);
 			System.out.println(re.toString());
 			return re;
