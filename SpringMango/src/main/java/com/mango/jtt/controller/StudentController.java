@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.mango.jtt.model.StudentEditModel;
 import com.mango.jtt.model.StudentSearchModel;
 import com.mango.jtt.model.StudentListModel;
@@ -25,20 +27,50 @@ public class StudentController extends BaseController {
 	private IStudentTService studentTService;
 
 	@SuppressWarnings("finally")
+	@RequestMapping({ "/toindex", "/toindex" })
+	public ResponseEntity<StudentListModel> toindex() throws Exception {
+	//public ModelAndView toindex() throws Exception {
+		//ModelAndView modelAndView = new ModelAndView("/student/toindex");  
+		ResponseEntity<StudentListModel> re = new ResponseEntity<StudentListModel>(HttpStatus.OK);
+		try{
+			//2如果存在则构造分页，构造数据给前端
+			List<StudentT> studentlist = studentTService.list(new StudentSearchModel());
+			StudentListModel ss = new StudentListModel();
+			PagedResult<StudentT> pr = new PagedResult<StudentT>();
+			pr.setDataList(studentlist);
+			ss.setPr(pr);
+			ss.setUrl("toindex");
+			re = new ResponseEntity<StudentListModel>(ss,HttpStatus.OK);
+		}catch (Exception e) {
+			StudentListModel ss = new StudentListModel();
+			ss.setMsg(new StringBuilder(e.getMessage()));
+			re = new ResponseEntity<StudentListModel>(ss,HttpStatus.INTERNAL_SERVER_ERROR);
+		}finally {
+			return re;
+		}
+		
+        //modelAndView.addObject("modeldata", re);  
+       // return modelAndView;  
+	}
+	
+	@SuppressWarnings("finally")
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<StudentListModel> index(@Valid StudentSearchModel searcher,HttpServletRequest req) throws Exception {
 		//1验证部分，其他在参数上自己验证
-		ResponseEntity<StudentListModel> re = new ResponseEntity<StudentListModel>(null);
+		ResponseEntity<StudentListModel> re = new ResponseEntity<StudentListModel>(HttpStatus.OK);
 		try{
 			//2如果存在则构造分页，构造数据给前端
 			List<StudentT> studentlist = studentTService.list(searcher);
 			StudentListModel ss = new StudentListModel();
 			PagedResult<StudentT> pr = new PagedResult<StudentT>();
 			pr.setDataList(studentlist);
-			pr.setPageSize(searcher.getPageSize());
-			pr.setPageNo(searcher.getPageNo());
+			if(searcher.getPageNo() != null && searcher.getPageNo() != null){
+				pr.setPageSize(searcher.getPageSize());
+				pr.setPageNo(searcher.getPageNo());
+			}
 			ss.setPr(pr);
 			re = new ResponseEntity<StudentListModel>(ss,HttpStatus.OK);
+			System.out.println(re.toString());
 			return re;
 		}catch (Exception e) {
 			StudentListModel ss = new StudentListModel();

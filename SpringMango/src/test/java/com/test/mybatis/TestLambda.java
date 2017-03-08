@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class TestLambda {
 
+	
 	@Test
 	public void test() {
 		String[] atp = {"Rafael Nadal", "Novak Djokovic",  

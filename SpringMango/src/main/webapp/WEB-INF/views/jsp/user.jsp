@@ -49,6 +49,10 @@
 		<img src="<c:url value='/resources/images/team.jpg'/>" />
 	</div>
 	<div>
+	
+	<a href="student/toindex">点此进入学生信息页面</a>
+	
+	
 		<label>保存新增</label>
 		
 		<form name="saveAddForm" method="post" action="user/">

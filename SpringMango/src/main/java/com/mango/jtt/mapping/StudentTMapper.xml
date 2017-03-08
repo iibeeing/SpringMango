@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="address" jdbcType="VARCHAR" property="address" />
-    <result column="friendName" jdbcType="VARCHAR" property="friendname" />
+    <result column="friendName" jdbcType="VARCHAR" property="friendName" />
     <result column="weight" jdbcType="INTEGER" property="weight" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -17,7 +17,7 @@
     from student_t
     where id = #{id,jdbcType=INTEGER}
   </select>
-  	<select id="select" resultMap="BaseResultMap" parameterType="com.mango.jtt.model.UserT">
+  	<select id="select" resultMap="BaseResultMap" parameterType="com.mango.jtt.model.StudentT">
 		select
 		<include refid="Base_Column_List" />
 		from student_t
@@ -25,7 +25,7 @@
 		<if test=" null != id">
 			and id = #{id}
 		</if>
-		<if test=" null != userName">
+		<if test=" null != name">
 			and name = #{name}
 		</if>
 		order by id
@@ -38,7 +38,7 @@
     insert into student_t (id, name, address, 
       friendName, weight)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{friendname,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER})
+      #{friendName,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.mango.jtt.model.StudentT">
     insert into student_t
@@ -52,7 +52,7 @@
       <if test="address != null">
         address,
       </if>
-      <if test="friendname != null">
+      <if test="friendName != null">
         friendName,
       </if>
       <if test="weight != null">
@@ -69,8 +69,8 @@
       <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="friendname != null">
-        #{friendname,jdbcType=VARCHAR},
+      <if test="friendName != null">
+        #{friendName,jdbcType=VARCHAR},
       </if>
       <if test="weight != null">
         #{weight,jdbcType=INTEGER},
@@ -86,8 +86,8 @@
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="friendname != null">
-        friendName = #{friendname,jdbcType=VARCHAR},
+      <if test="friendName != null">
+        friendName = #{friendName,jdbcType=VARCHAR},
       </if>
       <if test="weight != null">
         weight = #{weight,jdbcType=INTEGER},
@@ -99,7 +99,7 @@
     update student_t
     set name = #{name,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      friendName = #{friendname,jdbcType=VARCHAR},
+      friendName = #{friendName,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
