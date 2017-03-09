@@ -4,6 +4,7 @@ public class Messager {
 
 	private StringBuilder msg;
 
+	private String status;
 	private String url;
 	public StringBuilder getMsg() {
 		return msg;
@@ -19,6 +20,14 @@ public class Messager {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mango.jtt.dao.IExamCourseDao">
+	<resultMap id="BaseResultMap" type="com.mango.jtt.model.ExamCourse">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="examprojectid" jdbcType="BIGINT" property="examprojectid" />
+		<result column="userid" jdbcType="INTEGER" property="userid" />
+		<result column="datetime" jdbcType="TIMESTAMP" property="datetime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, examprojectid, userid, datetime
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from examcourse_t
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="select" resultMap="BaseResultMap" parameterType="com.mango.jtt.model.ExamCourse">
+		select
+		<include refid="Base_Column_List" />
+		from examcourse_t
+		where 1 = 1 
+<!-- 		<if test=" null != id">
+			and id = #{id}
+		</if>
+		<if test=" null != name">
+			and name = #{name}
+		</if>
+		<if test=" null != examprojectid">
+			and examprojectid = #{examprojectid}
+		</if> -->
+		order by id
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from examcourse_t
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.mango.jtt.model.ExamCourse">
+		insert into examcourse_t (id, name, examprojectid,
+		userid, datetime)
+		values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+		#{examprojectid,jdbcType=BIGINT},
+		#{userid,jdbcType=INTEGER}, #{datetime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" parameterType="com.mango.jtt.model.ExamCourse">
+		insert into examcourse_t
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="examprojectid != null">
+				examprojectid,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+			<if test="datetime != null">
+				datetime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="examprojectid != null">
+				#{examprojectid,jdbcType=BIGINT},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=INTEGER},
+			</if>
+			<if test="datetime != null">
+				#{datetime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.mango.jtt.model.ExamCourse">
+		update examcourse_t
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="examprojectid != null">
+				examprojectid = #{examprojectid,jdbcType=BIGINT},
+			</if>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=INTEGER},
+			</if>
+			<if test="datetime != null">
+				datetime = #{datetime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.mango.jtt.model.ExamCourse">
+		update examcourse_t
+		set name = #{name,jdbcType=VARCHAR},
+		examprojectid = #{examprojectid,jdbcType=BIGINT},
+		userid = #{userid,jdbcType=INTEGER},
+		datetime = #{datetime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

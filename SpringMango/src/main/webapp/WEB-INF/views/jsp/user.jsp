@@ -52,7 +52,7 @@
 	
 	<a href="student/toindex">点此进入学生信息页面</a>
 	
-	
+	<a href="examCourse/toindex">点此进入考试信息页面</a>
 		<label>保存新增</label>
 		
 		<form name="saveAddForm" method="post" action="user/">
