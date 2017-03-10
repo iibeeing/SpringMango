@@ -2,7 +2,9 @@ package com.mango.jtt.model;
 
 import java.util.Date;
 
-public class ExamCourseSearchModel {
+import com.mango.jtt.system.entity.Searcher;
+public class ExamCourseSearchModel extends Searcher{
+	
 	private long id;
 	private String name;
 	private ExamProject examProject;

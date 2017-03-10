@@ -39,6 +39,36 @@
 				}
 			});
 		});
+		
+		$("#list").click(function() {
+			var saveData = {};
+			$.ajax({
+				type : "get",
+				url : "user/list",
+				data : {
+				},
+				contentType : "application/x-www-form-urlencoded",
+				dataType : "json",
+				success : function(data) {
+					alert(data);
+				}
+			});
+		});
+		
+		$("#indexlist").click(function() {
+			var saveData = {};
+			$.ajax({
+				type : "get",
+				url : "user/indexlist",
+				data : {
+				},
+				contentType : "application/x-www-form-urlencoded",
+				dataType : "json",
+				success : function(data) {
+					alert(data);
+				}
+			});
+		});
 	});
 </script>
 </head>
@@ -124,6 +154,12 @@
 	</div>
 	<div>
 		<button id="jsdelete">JS删除00</button>
+	</div>
+	<div>
+		<button id="list">测试list</button>
+	</div>
+		<div>
+		<button id="indexlist">测试indexlist</button>
 	</div>
 </body>
 </html>

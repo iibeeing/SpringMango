@@ -1,8 +1,11 @@
 package com.mango.jtt.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class User extends PageFilter{
 
 	private int id;
+	//@NotEmpty(message = "姓名不能为空")
 	private String name;
 	private String password;
 

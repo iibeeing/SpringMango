@@ -5,11 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 //import org.springframework.cglib.proxy.UndeclaredThrowableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mango.jtt.model.ResponseResult;
 import com.mango.jtt.model.User;
 import com.mango.jtt.model.UserT;
-import com.mango.jtt.model.Users;
 import com.mango.jtt.service.IUserService;
 import com.mango.jtt.service.IUserTService;
 import com.mango.jtt.util.ConstUtil;
-import com.sun.tools.internal.ws.processor.model.Response;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -40,6 +34,18 @@ public class UserController extends BaseController{
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseResult index(@Valid User model, BindingResult br, HttpServletRequest req) throws Exception {
+		ResponseResult rr = new ResponseResult();
+		rr = userService.list(model);
+		System.out.println("index -- " + rr);
+		if(br.hasErrors()){
+			System.out.println(br.getFieldError().getDefaultMessage());
+		}
+		return rr;
+	}
+	
+	@RequestMapping(value = "/indexlist", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseResult indexlist(@Valid User model,HttpServletRequest req) throws Exception {
 		ResponseResult rr = new ResponseResult();
 		rr = userService.list(model);
 		System.out.println("index -- " + rr);
@@ -84,7 +90,7 @@ public class UserController extends BaseController{
 	@SuppressWarnings("finally")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseResult create(@NotNull @NotBlank String username, @NotNull @NotBlank String password, HttpServletRequest req) {
+	public ResponseResult create(String username, String password, HttpServletRequest req) {
 		ResponseResult rr = new ResponseResult();
 		try {
 			User model = new User();
