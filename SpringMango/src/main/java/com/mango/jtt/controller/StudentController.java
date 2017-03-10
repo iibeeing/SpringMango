@@ -1,12 +1,20 @@
 package com.mango.jtt.controller;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +35,26 @@ import com.mango.jtt.system.entity.PagedResult;
 public class StudentController extends BaseController<StudentT> {
 	@Autowired
 	private IStudentTService studentTService;
+
+	@SuppressWarnings("finally")
+	@RequestMapping(value = "/updateUserPic")
+	public ResponseEntity<Map<String, Object>> updateUserPic(@Valid StudentSearchModel searcher, BindingResult br)
+			throws IOException {
+		try {
+			if (br.hasErrors()) {
+				map.put("msg", br.getFieldError().getDefaultMessage());
+			} else {
+				List<StudentT> studentlist = studentTService.list(searcher);
+				map.put("studentlist", studentlist);
+				headers.setContentType(MediaType.APPLICATION_JSON);
+				httpStatus = HttpStatus.OK;
+			}
+		} catch (Exception e) {
+			map.put("msg", e.getMessage());
+		} finally{
+			return new ResponseEntity<Map<String, Object>>(map, headers, httpStatus);
+		}
+	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<ListModel<StudentT>> index(@Valid StudentSearchModel searcher, HttpServletRequest req)
@@ -54,7 +82,7 @@ public class StudentController extends BaseController<StudentT> {
 			return responseEntity;
 		}
 	}
-	
+
 	@RequestMapping({ "/toindex", "/toindex" })
 	public ModelAndView toindex() throws Exception {
 		ModelAndView mav = new ModelAndView("/student/toindex");
@@ -94,14 +122,13 @@ public class StudentController extends BaseController<StudentT> {
 			List<StudentT> list = studentTService.list(searcher);
 			if (list.isEmpty()) {
 				return new ResponseEntity<List<StudentT>>(HttpStatus.NO_CONTENT);// You
-			}else{
+			} else {
 				return new ResponseEntity<List<StudentT>>(list, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<List<StudentT>>(HttpStatus.BAD_REQUEST);// You
 		}
 	}
-
 
 	/** 显示 */
 	@SuppressWarnings("finally")

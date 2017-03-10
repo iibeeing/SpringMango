@@ -1,9 +1,15 @@
 package com.mango.jtt.controller;
 
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,8 +23,13 @@ import com.mango.jtt.util.ConstUtil;
 
 @RestController
 public class BaseController<T> {
-	protected ResponseEntity<ListModel<T>> responseEntity = new ResponseEntity<ListModel<T>>(HttpStatus.INTERNAL_SERVER_ERROR);
+	protected ResponseEntity<ListModel<T>> responseEntity = new ResponseEntity<ListModel<T>>(
+			HttpStatus.INTERNAL_SERVER_ERROR);
 	protected ResponseR<T> responser = new ResponseR<T>(responseEntity);
+
+	Map<String, Object> map = new HashMap<String, Object>();
+	HttpHeaders headers = new HttpHeaders();
+	HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 	public ResponseEntity<ListModel<T>> getResponseEntity() {
 		return responseEntity;
 	}
@@ -27,27 +38,32 @@ public class BaseController<T> {
 		this.responseEntity = responseEntity;
 	}
 
+	public BaseController() {
+		super();
+		headers.setContentType(MediaType.TEXT_PLAIN);
+	}
+
 	public void setResponseEntityList(List<T> list) {
 		ListModel<T> modelList = new ListModel<T>();
 		PagedResult<T> pr = new PagedResult<T>();
 		pr.setDataList(list);
 		modelList.setPr(pr);
-		responseEntity = new ResponseEntity<ListModel<T>>(modelList,HttpStatus.NO_CONTENT);
-		//responser.setResponseEntity(responseEntity);
+		responseEntity = new ResponseEntity<ListModel<T>>(modelList, HttpStatus.NO_CONTENT);
+		// responser.setResponseEntity(responseEntity);
 	}
 
 	/**
 	 * @param msg
 	 * @param status
-	 * 向前端发送消息
+	 *            向前端发送消息
 	 */
-	public void setMsg(String msg,HttpStatus status){
+	public void setMsg(String msg, HttpStatus status) {
 		ListModel<T> modelList = new ListModel<T>();
 		modelList.setMsg(new StringBuilder(msg));
-		responseEntity = new ResponseEntity<ListModel<T>>(modelList,status);
+		responseEntity = new ResponseEntity<ListModel<T>>(modelList, status);
 		responser.setResponseEntity(responseEntity);
 	}
-	
+
 	/**
 	 * 该类用于处理切面验证数据所抛出的异常到前台
 	 * 

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.mango.jtt.dao.IExamCourseDao;
 import com.mango.jtt.model.ExamCourse;
+import com.mango.jtt.model.ExamCourseEditModel;
 import com.mango.jtt.model.ExamCourseSearchModel;
 import com.mango.jtt.service.IExamCourseService;
 
@@ -26,6 +27,20 @@ public class ExamCourseServiceImpl implements IExamCourseService {
 		record.setName(searcher.getName());
 		record.setUserid(searcher.getUser().getId());*/
 		return examCourseDao.select(record);
+	}
+
+	@Override
+	public Boolean save(ExamCourseEditModel model) throws Exception {
+		Boolean result = false;
+		ExamCourse ec = new ExamCourse(model);
+		if(model.getId() != 0l){
+			//更新
+			examCourseDao.insertSelective(ec);
+		}else{
+			examCourseDao.updateByPrimaryKeySelective(ec);
+		}
+		result = true;
+		return result;
 	}
 
 }
