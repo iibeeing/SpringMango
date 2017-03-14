@@ -40,7 +40,7 @@ public class BaseController<T> {
 
 	public BaseController() {
 		super();
-		headers.setContentType(MediaType.TEXT_PLAIN);
+		headers.setContentType(MediaType.APPLICATION_JSON);
 	}
 
 	public void setResponseEntityList(List<T> list) {
@@ -49,7 +49,6 @@ public class BaseController<T> {
 		pr.setDataList(list);
 		modelList.setPr(pr);
 		responseEntity = new ResponseEntity<ListModel<T>>(modelList, HttpStatus.NO_CONTENT);
-		// responser.setResponseEntity(responseEntity);
 	}
 
 	/**

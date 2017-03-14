@@ -11,4 +11,6 @@ public interface IExamCourseService {
 	public ExamCourse getObjectById(long id) throws Exception;
 	public List<ExamCourse> list(ExamCourseSearchModel searcher) throws Exception;
 	public Boolean save(ExamCourseEditModel model) throws Exception;
+	public Boolean update(ExamCourseEditModel model) throws Exception;
+	public Boolean delete(List<Long> ids) throws Exception;
 }

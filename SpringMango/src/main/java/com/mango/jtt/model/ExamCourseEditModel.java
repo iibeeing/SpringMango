@@ -5,10 +5,10 @@ import java.util.Date;
 import org.hibernate.validator.constraints.NotBlank;
 
 public class ExamCourseEditModel {
-	private long id;
+	private long id = 0l;
 	@NotBlank(message = "考试课程名称不能为空")
 	private String name;
-	@NotBlank(message = "考试名称不能为空")
+	//@NotBlank(message = "考试名称不能为空")
 	private ExamProject examProject;
 	private Date dateTime;
 
